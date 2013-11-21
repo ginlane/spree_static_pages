@@ -1,0 +1,6 @@
+
+- content_for :page_title do
+  = @static_page.name
+
+#preview
+  = @static_page.content.html_safe

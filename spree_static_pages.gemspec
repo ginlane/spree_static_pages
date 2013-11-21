@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_static_pages'
-  s.version     = '2.1.2'
+  s.version     = '0.1'
   s.summary     = 'Static pages for Spree'
   s.description = "Static! Static! We're livin' in a video age!"
   s.required_ruby_version = '>= 1.9.3'
@@ -16,8 +16,11 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
+
   s.add_dependency 'spree'
   s.add_dependency 'haml-rails'
+  s.add_dependency 'redcarpet'
+  s.add_dependency 'ruby-oembed', '~>0.8.9'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'

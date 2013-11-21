@@ -1,0 +1,26 @@
+= render :partial => 'spree/admin/shared/configuration_menu'
+
+- content_for :page_title do
+  = Spree.t :static_pages
+
+= form_for [:admin, Spree::StaticPage.new ], html: { class: "static-page-form" }  do |f|
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :path
+    = f.text_field :path
+
+  .field
+    = f.label :active_on
+    %input{ type: "date", name: "spree_static_page[active_on]" }
+
+  .field
+    = f.label :content
+    = f.text_area :content
+
+  .field
+    = f.submit "Save", id: "save_button"
+    = f.button "Open Preview"

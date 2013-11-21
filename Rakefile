@@ -12,4 +12,6 @@ desc 'Generates a dummy app for testing'
 task :test_app do
   ENV['LIB_NAME'] = 'spree_static_pages'
   Rake::Task['extension:test_app'].invoke
+  sh "bundle exec rails g spree:install -auto-accept --force"
+  sh "bundle exec rails g spree_static_pages:install --auto-accept --auto-run-migrations"
 end

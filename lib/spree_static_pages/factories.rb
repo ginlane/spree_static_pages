@@ -3,4 +3,11 @@ FactoryGirl.define do
   #
   # Example adding this to your spec_helper will load these Factories for use:
   # require 'spree_static_pages/factories'
+
+  factory :static_page, class: Spree::StaticPage do
+    name "Zardoz Speaks To You"
+    path "/zardoz/speaks/to/you"
+    content "Video: http://www.youtube.com/watch?v=kbGVIdA3dx0 *italics*"
+    active_on { 1.day.ago }
+  end
 end
