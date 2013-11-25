@@ -1,0 +1,24 @@
+= form_for [:admin, static_page ], html: { class: "static-page-form", data: { model_id: static_page.id } }  do |f|
+
+  #urls{ data: { is_new: !static_page.id, update: admin_static_page_url(static_page.id || "ID"), new: admin_static_pages_url } }
+  %input#approve{ type: "hidden", name: "approve", value: "false" }
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :path
+    = f.text_field :path
+
+  .field
+    = f.label :active_on
+    %input{ type: "date", name: "spree_static_page[active_on]" }
+
+  .field
+    = f.label :content
+    = f.text_area :content
+
+  .field
+    = f.submit "Save", id: "save_button"
+    = f.button "Open Preview", id: "preview_button"
+    = f.button "Approve Page", class: "hidden", id: "approve_button"

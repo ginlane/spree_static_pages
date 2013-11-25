@@ -2,4 +2,4 @@
 #= require admin/spree_static_pages_editor
 
 $(document).ready ->
-  new StaticPageEditor("form.static-page-form")
+  window.pageEditor = new StaticPageEditor("form.static-page-form")

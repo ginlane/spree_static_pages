@@ -1,12 +1,25 @@
 class Spree::StaticPage < ActiveRecord::Base
-  validates_presence_of :name
-  validates_presence_of :path
+  scope :live, -> {
+    approved.where [ "approved_on > ?", Time.now ]
+  }
+  scope :approved, -> {
+    where state: "approved"
+  }
+  scope :draft, -> {
+    where state: "draft"
+  }
 
   URL_RE = /(https?:\/\/[^\s]+)/
-  cattr_accessor :markdown
+  state_machine initial: :draft do
+    event :approve do
+      transition draft: :approved
+    end
 
-  def self.configure_markdown
-    yield self
+    state :approved do
+      validates_presence_of :name
+      validates_presence_of :path
+      validates_presence_of :content
+    end
   end
 
   def content_html
@@ -25,6 +38,7 @@ class Spree::StaticPage < ActiveRecord::Base
 
   protected
   def content_oembed(text)
+    return if text.nil?
     text.gsub URL_RE do |url|
       provider = OEmbed::Providers.find $1
       provider ? provider.get(url).html : $1
@@ -36,6 +50,6 @@ class Spree::StaticPage < ActiveRecord::Base
   end
 
   def markdown
-    self.class.markdown
+    MARKDOWN
   end
 end

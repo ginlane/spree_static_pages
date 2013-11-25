@@ -14,7 +14,7 @@ describe Spree::Admin::StaticPagesController do
 
   it "should create some shiz" do
     expect {
-      spree_post :create, spree_static_page: FactoryGirl.attributes_for(:static_page)
+      spree_post :create, static_page: FactoryGirl.attributes_for(:static_page)
       response.should be_success
     }.to change(Spree::StaticPage, :count).by(1)
   end
