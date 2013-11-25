@@ -9,10 +9,13 @@
     @updateUrl     = urls.data "update"
     @createUrl     = urls.data "create"
     @isNew         = typeof urls.data("is-new") != "undefined"
+    @destroyButton = $ "#destroy_button"
     @approveButton = $ "#approve_button"
     @approveButton.show() if @isApproveable()
 
-    @approveButton.on "keydown", @approve
+
+    @approveButton.on "click", @approve
+    @destroyButton.on "keydown", @destroy
 
     @editBox.on "keydown", @markEdited
     @editBox.on "submit", @save
@@ -38,8 +41,7 @@
       @showErrors response
 
   showErrors: (e) =>
-    console.log "Errors"
-    console.log e
+
 
   preview: (e) =>
     e.preventDefault() if e
@@ -52,6 +54,7 @@
         @previewWindow = window.open @updateUrl, "previewWindow"
         if e
           $(e.currentTarget).html "Refresh Preview"
+
 
   approve: (e) =>
     e.preventDefault()

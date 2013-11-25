@@ -5,7 +5,28 @@
 
 = render partial: "spree/admin/static_pages/form", locals: { static_page: @static_page }
 
-%ul
-- @static_pages.each do |page|
-  %li
-    = link_to page.name, edit_admin_static_page_url(page.id)
+%table
+  %tr
+    %th
+      Active on
+    %th
+      Name
+    %th
+      Path
+    %th
+      Status
+    %th
+  - @static_pages.each do |page|
+    %tr{ class: cycle("even", "odd") }
+      %td
+        = page.active_on.try :strftime, "%Y/%m/%d"
+      %td
+        = link_to page.name, edit_admin_static_page_url(page.id)
+      %td
+        = page.path
+      %td
+        = page.state.humanize
+
+      %td
+        = form_for [:admin, page ] do |f|
+          = link_to_remove_fields "Delete", f, id: "delete_button"

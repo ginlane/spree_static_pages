@@ -3,5 +3,5 @@ Spree::Core::Engine.routes.draw do
     resources :static_pages
   end
 
-  get "/s/*path", to: "store/static_pages#show"
+  get "/s/*path", to: "static_pages#show"
 end

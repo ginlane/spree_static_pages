@@ -1,6 +1,6 @@
 class Spree::StaticPage < ActiveRecord::Base
   scope :live, -> {
-    approved.where [ "approved_on > ?", Time.now ]
+    approved.where [ "active_on < ?", Time.now ]
   }
   scope :approved, -> {
     where state: "approved"
@@ -12,7 +12,7 @@ class Spree::StaticPage < ActiveRecord::Base
   URL_RE = /(https?:\/\/[^\s]+)/
   state_machine initial: :draft do
     event :approve do
-      transition draft: :approved
+      transition any => :approved
     end
 
     state :approved do
