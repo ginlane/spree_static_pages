@@ -1,4 +1,6 @@
 class Spree::StaticPage < ActiveRecord::Base
+  before_save :sanitize_path
+
   scope :live, -> {
     approved.where [ "active_on < ?", Time.now ]
   }
@@ -13,6 +15,10 @@ class Spree::StaticPage < ActiveRecord::Base
   state_machine initial: :draft do
     event :approve do
       transition any => :approved
+    end
+
+    event :disapprove do
+      transition any => :draft
     end
 
     state :approved do
@@ -51,5 +57,12 @@ class Spree::StaticPage < ActiveRecord::Base
 
   def markdown
     MARKDOWN
+  end
+
+  def sanitize_path
+    if path[0] == "/"
+      path.slice! 1, path.length
+    end
+    self.path = URI(path).normalize.path
   end
 end

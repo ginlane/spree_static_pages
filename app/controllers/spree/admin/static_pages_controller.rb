@@ -31,7 +31,9 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
     @static_page.update_attributes page_params.slice(:name, :path, :active_on, :content)
 
     if params[:approve].to_s == "true"
-      @static_page.approve!
+      @static_page.approve
+    elsif params[:approve] == "false"
+      @static_page.disapprove
     end
 
     if @static_page.valid?
