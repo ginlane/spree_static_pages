@@ -21,6 +21,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency 'redcarpet'
   s.add_dependency 'ruby-oembed', '~>0.8.9'
+  s.add_dependency 'ember-rails'
+  s.add_dependency 'ember-source', '~>1.2.0'
+  s.add_dependency 'emblem-rails'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'
