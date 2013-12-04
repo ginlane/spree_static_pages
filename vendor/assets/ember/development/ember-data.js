@@ -217,6 +217,7 @@ DS.JSONSerializer = Ember.Object.extend({
   },
 
   extractArray: function(store, type, payload) {
+    console.log("extractArray")
     return this.normalize(type, payload);
   },
 
@@ -2664,9 +2665,7 @@ function _findAll(adapter, store, type, sinceToken, resolver) {
       serializer = serializerForAdapter(adapter, type);
 
   return resolve(promise).then(function(payload) {
-    console.log(payload)
     payload = serializer.extract(store, type, payload, null, 'findAll');
-    console.log(payload)
 
     Ember.assert("The response from a findAll must be an Array, not " + Ember.inspect(payload), Ember.typeOf(payload) === 'array');
 
@@ -7936,6 +7935,7 @@ DS.ActiveModelSerializer = DS.RESTSerializer.extend({
       updatePayloadWithEmbedded(store, this, type, partial, payload);
     }, this);
 
+    this._super(store, type, payload);
     return this._super(store, type, payload);
   }
 });
