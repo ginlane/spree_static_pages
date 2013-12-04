@@ -14,5 +14,4 @@ window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
 
 window.SpreeStaticPages.IndexRoute = Ember.Route.extend
   model: ->
-    console.log "WTFMATE"
     @store.find "static_page"

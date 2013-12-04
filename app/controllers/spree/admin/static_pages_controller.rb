@@ -5,7 +5,7 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
     @static_page = Spree::StaticPage.new
     respond_to do |format|
       format.html
-      format.json { render json: @static_page, controller: self }
+      format.json { render json: @static_pages, controller: self }
     end
   end
 
