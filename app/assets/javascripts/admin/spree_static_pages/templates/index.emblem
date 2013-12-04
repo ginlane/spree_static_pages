@@ -10,15 +10,16 @@ table
       | Status
     th
 
-  each pages in page
+  each page in pages
+
     tr
       td
-        = page.active_on
+        = path.activeOn
       td
-        = page.name
+        = path.name
       td
-        = page.path
+        = path.path
       td
-        = page.state
+        = path.state
       td
         | Delete

@@ -9,6 +9,3 @@ window.SpreeStaticPages.Store = DS.Store.extend
 
 DS.ActiveModelAdapter.reopen
   namespace: "admin"
-
-a = new DS.ActiveModelAdapter
-console.log a.buildURL("static_page")

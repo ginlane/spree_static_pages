@@ -9,9 +9,9 @@ window.SpreeStaticPages.Router.map ()->
 
 window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
   model: ->
-    console.log "Route: static_page"
     @store.find "static_page"
 
 window.SpreeStaticPages.IndexRoute = Ember.Route.extend
   model: ->
+    console.log "Route: index"
     @store.find "static_page"
