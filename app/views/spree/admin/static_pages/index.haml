@@ -1,5 +1,4 @@
 = render partial: 'spree/admin/shared/configuration_menu'
-
 - content_for :page_title do
   = Spree.t :static_pages
 
@@ -8,7 +7,7 @@
 
 #static-pages-index
   :javascript
-    PreloadStore.store('pages', #{@static_pages.to_json})
+
 -#  %table
 -#    %tr
 -#      %th

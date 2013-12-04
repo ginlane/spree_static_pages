@@ -1,0 +1,24 @@
+table
+  tr
+    th
+      | Active on
+    th
+      | Name
+    th
+      | Path
+    th
+      | Status
+    th
+
+  each pages in page
+    tr
+      td
+        = page.active_on
+      td
+        = page.name
+      td
+        = page.path
+      td
+        = page.state
+      td
+        | Delete

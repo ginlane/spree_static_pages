@@ -3,6 +3,10 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
 
   def index
     @static_page = Spree::StaticPage.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @static_page, controller: self }
+    end
   end
 
   def show

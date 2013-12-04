@@ -1,0 +1,2 @@
+
+window.SpreeStaticPages.IndexController = Ember.ArrayController.extend

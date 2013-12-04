@@ -3,13 +3,9 @@
 #= require ember
 #= require ember-data
 #= require_self
-#= require spree_static_pages/store
-#= require spree_static_pages/spree_static_pages
+#= require ./spree_static_pages/spree_static_pages
 
-window.SSP      = { }
-
-window.SpreeStaticPagesEditor = Ember.Application.create
-  rootElement: "#static-pages-editor"
-
-window.SpreeStaticPagesIndex = Ember.Application.create
+window.SpreeStaticPages = Ember.Application.create
   rootElement: "#static-pages-index"
+
+#window.SpreeStaticPages.ApplicationSerializer = DS.ActiveModelSerializer.extend
