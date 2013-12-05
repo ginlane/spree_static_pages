@@ -2,16 +2,21 @@
 
 window.SpreeStaticPages.Router.reopen
   rootURL: "/admin"
-  location: 'none'
 
 window.SpreeStaticPages.Router.map ()->
-  @resource 'static_page', { path: "static_pages" }
+  @resource 'static_page', { path: "static_pages" }, ->
+    @route "edit", path: "/edit/:static_page_id"
 
 # window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
 #   model: ->
 #     @store.find "static_page"
 
 window.SpreeStaticPages.IndexRoute = Ember.Route.extend
+  templateName: "admin/spree_static_pages/index"
   model: ->
-    console.log @templateName
     @store.find "static_page"
+
+window.SpreeStaticPages.StaticPageEditRoute = Ember.Route.extend
+  templateName: "admin/spree_static_pages/static_page/edit"
+  model: (params) ->
+    @store.find "static_page", params.static_page_id
