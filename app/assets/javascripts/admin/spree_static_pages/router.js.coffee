@@ -18,5 +18,7 @@ window.SpreeStaticPages.IndexRoute = Ember.Route.extend
 
 window.SpreeStaticPages.StaticPageEditRoute = Ember.Route.extend
   templateName: "admin/spree_static_pages/static_page/edit"
+  renderTemplate: ->
+    @render @templateName, controller: "StaticPageEditController"
   model: (params) ->
     @store.find "static_page", params.static_page_id

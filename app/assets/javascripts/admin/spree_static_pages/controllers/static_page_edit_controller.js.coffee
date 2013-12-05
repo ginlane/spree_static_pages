@@ -1,3 +1,5 @@
-window.StaticPageEditController = Ember.ObjectController.extend
-  save: () ->
-    #
+window.SpreeStaticPages.StaticPageEditController = Ember.ObjectController.extend
+  actions:
+    save: ->
+      console.log "SAVE"
+      #
