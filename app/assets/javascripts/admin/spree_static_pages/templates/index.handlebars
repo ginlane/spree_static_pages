@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Active On</th>
+    <th>Name</th>
+    <th>Path</th>
+    <th>Status</th>
+  </tr>
+  {{#each page in pages}}
+  <tr>
+    <td>{{ activeOn }}</td>
+    <td>{{ name }}</td>
+    <td>{{ path }}</td>
+    <td>{{ state }}</td>
+    <td>Delete</td>
+  </tr>
+  {{/each}}
+</table>

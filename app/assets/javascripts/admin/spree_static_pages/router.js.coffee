@@ -7,11 +7,11 @@ window.SpreeStaticPages.Router.reopen
 window.SpreeStaticPages.Router.map ()->
   @resource 'static_page', { path: "static_pages" }
 
-window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
-  model: ->
-    @store.find "static_page"
+# window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
+#   model: ->
+#     @store.find "static_page"
 
 window.SpreeStaticPages.IndexRoute = Ember.Route.extend
   model: ->
-    console.log "Route: index"
+    console.log @templateName
     @store.find "static_page"
