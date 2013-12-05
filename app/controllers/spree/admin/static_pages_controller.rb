@@ -34,6 +34,7 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
     page_params  = params.delete :static_page
     @static_page.update_attributes page_params.slice(:name, :path, :active_on, :content)
 
+
     if params[:approve].to_s == "true"
       @static_page.approve
     elsif params[:approve] == "false"
