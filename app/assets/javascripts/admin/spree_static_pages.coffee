@@ -1,10 +1,9 @@
 #= require jquery
 #= require ./lib/handlebars
-#= require ember
-#= require ember-data
+#= require ./lib/ember
+#= require ./lib/ember-data
 #= require_self
 #= require ./spree_static_pages/spree_static_pages
-
 
 window.SpreeStaticPages = Ember.Application.create
   LOG_BINDINGS: true
