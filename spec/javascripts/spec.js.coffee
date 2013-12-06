@@ -6,4 +6,4 @@
 # require admin/spree_static_pages
 #=require_tree ./
 
-window.Ember.Resource.Lifecycle.clock.stop()
+# window.Ember.Resource.Lifecycle.clock.stop()
