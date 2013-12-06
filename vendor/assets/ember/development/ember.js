@@ -864,9 +864,9 @@ Ember.handleErrors = function(func, context) {
 
 /**
   @private
-  
+
   Prefix used for guids through out Ember.
-  
+
 */
 Ember.GUID_PREFIX = 'ember';
 
@@ -2201,7 +2201,7 @@ function suspendListener(obj, eventName, target, method, callback) {
 
   Suspends multiple listeners during a callback.
 
-  
+
   @method suspendListeners
   @for Ember
   @param obj
@@ -2269,7 +2269,7 @@ function watchedEvents(obj) {
   is skipped, and once listeners are removed. A listener without
   a target is executed on the passed object. If an array of actions
   is not passed, the actions stored on the passed object are invoked.
-  
+
   @method sendEvent
   @for Ember
   @param obj
@@ -3042,14 +3042,14 @@ Map.create = function() {
 Map.prototype = {
   /**
     This property will change as the number of objects in the map changes.
-   
+
     @property length
     @type number
     @default 0
   */
   length: 0,
-    
-    
+
+
   /**
     Retrieve the value associated with a given key.
 
@@ -11482,7 +11482,7 @@ function classToString() {
   if (this[NAME_KEY]) {
     ret = this[NAME_KEY];
   } else if (this._toString) {
-    ret = this._toString; 
+    ret = this._toString;
   } else {
     var str = superClassString(this);
     if (str) {
@@ -14778,7 +14778,7 @@ Ember.computed.sort = function (itemsKey, sortDefinition) {
 (function() {
 /**
   Expose RSVP implementation
-  
+
   Documentation can be found here: https://github.com/tildeio/rsvp.js/blob/master/README.md
 
   @class RSVP
@@ -16152,7 +16152,7 @@ function observePromise(proxy, promise) {
   controller.get('lastName')  //=> 'Penner'
   ```
 
-  If the controller is backing a template, the attributes are 
+  If the controller is backing a template, the attributes are
   bindable from within that template
 
   ```handlebars
@@ -18125,8 +18125,8 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
    ```javascript
   songsController.get('content').get('firstObject'); // Returns the unsorted original content
   songsController.get('firstObject'); // Returns the sorted content.
-  ``` 
-  
+  ```
+
   Although the sorted content can also be accessed through the arrangedContent property,
   it is preferable to use the proxied class and not the arrangedContent array directly.
 
@@ -18215,7 +18215,7 @@ Ember.SortableMixin = Ember.Mixin.create(Ember.MutableEnumerable, {
   /**
     Overrides the default arrangedContent from arrayProxy in order to sort by sortFunction.
     Also sets up observers for each sortProperty on each item in the content Array.
-    
+
     @property arrangedContent
   */
 
@@ -23519,7 +23519,7 @@ Ember.Component = Ember.View.extend(Ember.TargetActionSupport, {
     When the component receives a browser `click` event it translate this
     interaction into application-specific semantics ("play" or "stop") and
     triggers the specified action name on the controller for the template
-    where the component is used: 
+    where the component is used:
 
 
     ```javascript
@@ -23800,7 +23800,7 @@ define("metamorph",
 
       /**
       * @public
-      * 
+      *
       * Remove this object (including starting and ending
       * placeholders).
       *
@@ -28407,7 +28407,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-  
+
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("<option value=\"\">");
   hashTypes = {};
@@ -28418,7 +28418,7 @@ function program1(depth0,data) {
   }
 
 function program3(depth0,data) {
-  
+
   var stack1, hashTypes, hashContexts;
   hashTypes = {};
   hashContexts = {};
@@ -28427,7 +28427,7 @@ function program3(depth0,data) {
   else { data.buffer.push(''); }
   }
 function program4(depth0,data) {
-  
+
   var hashContexts, hashTypes;
   hashContexts = {'content': depth0,'label': depth0};
   hashTypes = {'content': "ID",'label': "ID"};
@@ -28438,7 +28438,7 @@ function program4(depth0,data) {
   }
 
 function program6(depth0,data) {
-  
+
   var stack1, hashTypes, hashContexts;
   hashTypes = {};
   hashContexts = {};
@@ -28447,7 +28447,7 @@ function program6(depth0,data) {
   else { data.buffer.push(''); }
   }
 function program7(depth0,data) {
-  
+
   var hashContexts, hashTypes;
   hashContexts = {'content': depth0};
   hashTypes = {'content': "ID"};
@@ -28465,7 +28465,7 @@ function program7(depth0,data) {
   stack1 = helpers['if'].call(depth0, "view.optionGroupPath", {hash:{},inverse:self.program(6, program6, data),fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
-  
+
 }),
   attributeBindings: ['multiple', 'disabled', 'tabindex', 'name'],
 
@@ -31389,7 +31389,7 @@ var get = Ember.get;
 */
 
 /**
-  
+
   Finds a controller instance.
 
   @for Ember
@@ -31405,7 +31405,7 @@ Ember.controllerFor = function(container, controllerName, lookupOptions) {
   The type of generated controller depends on the context.
   You can customize your generated controllers by defining
   `App.ObjectController` and `App.ArrayController`
-  
+
   @for Ember
   @method generateController
   @private
@@ -34378,8 +34378,8 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     App.ApplicationController = Ember.Controller.extend({
       actions: {
         anActionName: function() {
-          
-        }  
+
+        }
       }
     });
     ```
@@ -34699,7 +34699,7 @@ Ember.ControllerMixin.reopen({
       this.resource('blogPost', {path:':blogPostId'}, function(){
         this.resource('blogComment', {path: ':blogCommentId'});
       });
-      
+
       aController.transitionToRoute('blogComment', aPost, aComment);
     ```
 
@@ -34730,7 +34730,7 @@ Ember.ControllerMixin.reopen({
 
   /**
     Transition into another route while replacing the current URL, if possible.
-    This will replace the current history entry instead of adding a new one. 
+    This will replace the current history entry instead of adding a new one.
     Beside that, it is identical to `transitionToRoute` in all other respects.
 
     ```javascript
@@ -34754,7 +34754,7 @@ Ember.ControllerMixin.reopen({
       this.resource('blogPost', {path:':blogPostId'}, function(){
         this.resource('blogComment', {path: ':blogCommentId'});
       });
-      
+
       aController.replaceRoute('blogComment', aPost, aComment);
     ```
 
@@ -34944,7 +34944,7 @@ Ember.View.reopen({
 
 // Add a new named queue after the 'actions' queue (where RSVP promises
 // resolve), which is used in router transitions to prevent unnecessary
-// loading state entry if all context promises resolve on the 
+// loading state entry if all context promises resolve on the
 // 'actions' queue first.
 
 var queues = Ember.run.queues,
@@ -38276,7 +38276,7 @@ Ember.StateManager = generateRemovedClass("Ember.StateManager");
 
 /**
   This was exported to ember-states plugin for v 1.0.0 release. See: https://github.com/emberjs/ember-states
-  
+
   @class StateManager
   @namespace Ember
 */
@@ -38285,7 +38285,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 /**
   This was exported to ember-states plugin for v 1.0.0 release. See: https://github.com/emberjs/ember-states
-  
+
   @class State
   @namespace Ember
 */

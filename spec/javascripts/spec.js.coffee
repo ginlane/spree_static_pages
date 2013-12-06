@@ -3,5 +3,7 @@
 # spec/javascripts/*_spec.js.coffee
 # spec/javascripts/*_spec.js
 # spec/javascripts/*_spec.js.erb
-#
+# require admin/spree_static_pages
 #=require_tree ./
+
+window.Ember.Resource.Lifecycle.clock.stop()

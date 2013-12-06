@@ -24,6 +24,5 @@ end
 
 guard 'jasmine-headless-webkit' do
   watch(%r{^app/assets/javascripts/(.*)\..*}) { |m| newest_js_file("spec/javascripts/#{m[1]}_spec") }
+  watch(%r{^spec/javascripts/(.*)_spec\..*}) { |m| newest_js_file("spec/javascripts/#{m[1]}_spec") }
 end
-
-
