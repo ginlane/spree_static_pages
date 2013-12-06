@@ -4,4 +4,4 @@ describe "fnord", ->
   beforeEach ->
 
   it "should thing", ->
-    Ember.should.not.beUndefined()
+    expect(Ember).toBeDefined()
