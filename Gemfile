@@ -13,7 +13,7 @@ gem 'shoulda-matchers', '~>2.4.0', require: false
 gem 'ember-rails'
 gem 'ember-source', '~>1.2.0'
 gem 'emblem-rails'
-gem 'jasminerice', git: "https://github.com/bradphelan/jasminerice.git"
-gem 'jasmine-headless-webkit'
-gem 'guard-jasmine-headless-webkit'
+gem 'qunit-rails'
+gem 'teaspoon'
+gem 'guard-teaspoon'
 gemspec

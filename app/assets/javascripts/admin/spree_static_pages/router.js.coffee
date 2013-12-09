@@ -4,7 +4,7 @@ window.SpreeStaticPages.Router.reopen
   rootURL: "/admin"
 
 window.SpreeStaticPages.Router.map ()->
-  @resource 'static_page', { path: "static_pages" }, ->
+  @resource 'static_page', { path: "/" }, ->
     @route "edit", path: "/edit/:static_page_id"
 
 # window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
