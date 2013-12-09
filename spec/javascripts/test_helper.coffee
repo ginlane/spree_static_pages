@@ -28,6 +28,7 @@
 #= require_tree ./admin
 
 window.App = SpreeStaticPages
+
 #document.write "<div id='qunit'></div><div id='ember-testing'></div>"
 App.reopen
   rootElement: "#ember-testing"

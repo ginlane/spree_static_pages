@@ -22,8 +22,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet'
   s.add_dependency 'ruby-oembed', '~>0.8.9'
   s.add_dependency 'ember-rails'
-  s.add_dependency 'ember-source', '~>1.2.0'
-  s.add_dependency 'handlebars-source', '~>1.1.2'
+  # s.add_dependency 'ember-source', '~>1.2.0'
+  # s.add_dependency 'handlebars-source', '~>1.1.2'
+  # s.add_dependency 'handlebars_assets'
   #s.add_dependency 'emblem-rails'
 
   s.add_development_dependency 'capybara', '~> 2.1'
@@ -38,6 +39,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-rspec'
-  s.add_development_dependency 'handlebars_assets'
+
 
 end

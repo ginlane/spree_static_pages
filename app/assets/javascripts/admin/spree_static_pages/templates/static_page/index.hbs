@@ -9,7 +9,7 @@
   {{#each page in model}}
   <tr>
     <td class='page'>{{ page.activeOn }}</td>
-    <td>{{#link-to 'static_page.edit' page }}{{page.name}}{{/link-to}}</td>
+    <td>{{#link-to 'static_pages.edit' page }}{{page.name}}{{/link-to}}</td>
     <td>{{ page.path }}</td>
     <td>{{ page.state }}</td>
     <td>Delete</td>

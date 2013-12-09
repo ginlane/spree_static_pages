@@ -4,21 +4,23 @@ window.SpreeStaticPages.Router.reopen
   rootURL: "/admin"
 
 window.SpreeStaticPages.Router.map ()->
-  @resource 'static_page', { path: "/" }, ->
-    @route "edit", path: "/edit/:static_page_id"
+  @resource 'static_pages', { path: "/" }, ->
+    @route "edit",  { path: "static_page/:static_page_id/edit" }
 
 # window.SpreeStaticPages.StaticPageRoute = Ember.Route.extend
 #   model: ->
 #     @store.find "static_page"
 
-window.SpreeStaticPages.IndexRoute = Ember.Route.extend
-  templateName: "admin/spree_static_pages/index"
+window.SpreeStaticPages.StaticPagesIndexRoute = Ember.Route.extend
+  templateName: "static_page/index"
+  renderTemplate: ->
+    @render @templateName, controller: @controllerFor("static_pages.index")
   model: ->
     @store.find "static_page"
 
-window.SpreeStaticPages.StaticPageEditRoute = Ember.Route.extend
-  templateName: "admin/spree_static_pages/static_page/edit"
+window.SpreeStaticPages.StaticPagesEditRoute = Ember.Route.extend
+  templateName: "static_page/edit"
   renderTemplate: ->
-    @render @templateName, controller: @controllerFor("static_page.edit")
+    @render @templateName, controller: @controllerFor("static_pages.edit")
   model: (params) ->
     @store.find "static_page", params.static_page_id

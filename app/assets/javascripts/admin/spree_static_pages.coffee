@@ -2,6 +2,7 @@
 #= require ./spree_static_pages/lib/handlebars
 #= require ./spree_static_pages/lib/ember
 #= require ./spree_static_pages/lib/ember-data
+#= require handlebars.runtime
 #= require_self
 #= require ./spree_static_pages/spree_static_pages
 

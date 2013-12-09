@@ -1,8 +1,8 @@
 module "SpreeStaticPages.Routes"
-#   setup: ->
+#     setup: ->
 #     App.reset()
 
 
 test "rendering the index", ->
-  visit("/static_pages/edit/1").then ->
+  visit("/").then ->
     equal(find(".page").length, 2)
