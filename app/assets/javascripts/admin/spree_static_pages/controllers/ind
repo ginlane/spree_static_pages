@@ -1,2 +1,2 @@
 
-window.SpreeStaticPages.IndexController = Ember.ArrayController.extend
+window.SpreeStaticPages.StaticPagesIndexController = Ember.ArrayController.extend()

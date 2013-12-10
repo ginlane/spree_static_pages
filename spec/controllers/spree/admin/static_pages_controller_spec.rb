@@ -9,7 +9,7 @@ describe Spree::Admin::StaticPagesController do
   it "should respond with rendered html" do
     @page = FactoryGirl.create :static_page
     spree_get :show, id: @page.id, format: :json
-    JSON.parse(response.body)["content"].should eql @page.content_html
+    JSON.parse(response.body)["static_page"]["text"].should eql @page.text_html
   end
 
   it "should create some shiz" do

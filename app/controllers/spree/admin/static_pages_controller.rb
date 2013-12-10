@@ -12,7 +12,7 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @static_page }
+      format.json { render json: @static_page, controller: self }
     end
   end
 
@@ -20,10 +20,11 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
   end
 
   def create
-    page_params  = params.delete :static_page
-    @static_page = Spree::StaticPage.create page_params.slice(:name, :path, :active_on, :content)
+    page_params               = params.delete :static_page
+    page_params[:active_on] ||= page_params.delete :activeOn
+    @static_page = Spree::StaticPage.create page_params.slice(:name, :path, :active_on, :text)
     if @static_page.valid?
-      render json: @static_page, status: :created
+      render json: @static_page, status: :created, controller: self
     else
       render json: @static_page.errors, status: :unprocessable_entity
     end
@@ -32,17 +33,19 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
   def update
     @static_page = Spree::StaticPage.find params[:id]
     page_params  = params.delete :static_page
-    @static_page.update_attributes page_params.slice(:name, :path, :active_on, :content)
+    # TODO: update to autodecamelize all attrs
+    page_params[:active_on] ||= page_params.delete :activeOn
+    @static_page.update_attributes page_params.slice(:name, :path, :active_on, :text)
 
 
     if params[:approve].to_s == "true"
       @static_page.approve
-    elsif params[:approve] == "false"
+    elsif params[:approve].to_s == "false"
       @static_page.disapprove
     end
 
     if @static_page.valid?
-      render json: @static_page, status: :ok
+      render json: @static_page, status: :ok, controller: self
     else
       render json: @static_page.errors, status: :unprocessable_entity
     end

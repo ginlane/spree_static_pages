@@ -19,6 +19,7 @@ Teaspoon.setup do |config|
 
   config.suite do |suite|
     suite.javascripts = %w[ teaspoon/qunit ]
+    suite.helper      = "test_helper"
   end
 
   # Behaviors

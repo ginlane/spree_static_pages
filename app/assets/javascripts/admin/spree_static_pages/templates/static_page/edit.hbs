@@ -1,4 +1,4 @@
-<form>
+<form class="static-page-form">
   <div class="field">
     {{input type="text" value=name}}
   </div>
@@ -6,10 +6,13 @@
     {{input type="text" value=path}}
   </div>
   <div class="field">
-    {{input type="date" value=activeOn}}
+    {{view SpreeStaticPages.DateField dateBinding="activeOn"}}
   </div>
   <div class="field">
-    {{textarea value=content}}
+    {{textarea value=text}}
   </div>
   <button {{action "save"}}>Save</button>
+  {{#unless isNew}}
+    {{view SpreeStaticPages.PreviewButton}}
+  {{/unless}}
 </form>

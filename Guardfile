@@ -27,7 +27,7 @@ end
 #   watch(%r{^spec/javascripts/(.*)_spec\..*}) { |m| newest_js_file("spec/javascripts/#{m[1]}_spec") }
 # end
 
-guard :teaspoon do
+guard :teaspoon, port: 57555 do
   # Implementation files
   watch(%r{app/assets/javascripts/(.+).coffee}) { |m| "#{m[1]}_spec" }
 

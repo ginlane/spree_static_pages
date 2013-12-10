@@ -1,6 +1,6 @@
-window.SpreeStaticPages.StaticPagesEditController = Ember.ObjectController.extend
-  isNew: false
-  previewUrl: -> @get("model").get("previewUrl")
+window.SpreeStaticPages.StaticPagesNewController = Ember.ObjectController.extend
+  templateName: "static_page/new"
+  isNew: true
   actions:
     save: ->
       page = @get "model"

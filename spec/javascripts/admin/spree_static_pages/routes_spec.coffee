@@ -4,5 +4,6 @@ module "SpreeStaticPages.Routes"
 
 
 test "rendering the index", ->
-  visit("/").then ->
-    equal(find(".page").length, 2)
+  Ember.run ->
+    visit("/").then ->
+      equal(find(".page").length, 2)
