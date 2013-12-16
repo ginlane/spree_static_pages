@@ -1,0 +1,19 @@
+{{#link-to "static_pages.new"}}New Page{{/link-to}}
+<table>
+  <tr>
+    <th>Active On</th>
+    <th>Name</th>
+    <th>Path</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  {{#each page in model}}
+  <tr>
+    <td class='page'>{{ page.activeOn }}</td>
+    <td>{{#link-to 'static_pages.edit' page }}{{page.name}}{{/link-to}}</td>
+    <td>{{ page.path }}</td>
+    <td>{{ page.state }}</td>
+    <td>Delete</td>
+  </tr>
+  {{/each}}
+</table>

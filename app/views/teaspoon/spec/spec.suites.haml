@@ -1,0 +1,32 @@
+%html
+  %head
+    %title>Teaspoon :: Suites
+    %meta( name="viewport" content="width=device-width, user-scalable=no")
+    = csrf_meta_tags
+    = stylesheet_link_tag_for_teaspoon *(@suites.first.present? ? @suites.first.stylesheets : "teaspoon")
+    = javascript_include_tag_for_teaspoon "teaspoon-teaspoon"
+
+  %body
+    #teaspoon-interface
+      .teaspoon-clearfix
+        #teaspoon-title"
+          %h1 Teaspoon
+          %ul
+            %li version:
+              %b= Teaspoon::VERSION
+            %li
+              %a(href="http://github.com/modeset/teaspoon" target="blank") http://github.com/modeset/teaspoon
+
+        #teaspoon-progress
+          .teaspoon-indicator.modeset-logo
+      #teaspoon-controls.teaspoon-clearfix
+        %input( type="text" id="teaspoon-filter-input" placeholder="filter files")
+      %hr
+      %ul#teaspoon-suite-list
+        - for suite in @suites
+          %li.suite
+            %h1= link_to suite.name, suite.link
+            %ul.file
+              - for file in suite.spec_files
+                %h4= link_to file[:name], suite.link(file: file[:path])
+    #ember-test

@@ -24,35 +24,31 @@ class Spree::StaticPage < ActiveRecord::Base
     state :approved do
       validates_presence_of :name
       validates_presence_of :path
-      validates_presence_of :content
+      validates_presence_of :text
     end
   end
 
-  def content_html
-    @content_html ||= content_markdown content_oembed content
-    @content_html.strip
+  def text_html
+    @text_html ||= text_markdown text_oembed text
+    @text_html.strip
   end
 
-  def content=(content)
-    @content_html = nil
+  def text=(t)
+    @text_html = nil
     super
   end
 
-  def as_json(options = { })
-    super.merge content: content_html
-  end
-
   protected
-  def content_oembed(text)
-    return if text.nil?
-    text.gsub URL_RE do |url|
+  def text_oembed(t)
+    return if t.nil?
+    t.gsub URL_RE do |url|
       provider = OEmbed::Providers.find $1
       provider ? provider.get(url).html : $1
     end
   end
 
-  def content_markdown(text)
-    markdown.render text
+  def text_markdown(t)
+    markdown.render t
   end
 
   def markdown
@@ -60,9 +56,7 @@ class Spree::StaticPage < ActiveRecord::Base
   end
 
   def sanitize_path
-    if path[0] == "/"
-      path.slice! 1, path.length
-    end
+    self.path = path.slice 1, path.length if path[0] == "/"
     self.path = URI(path).normalize.path
   end
 end

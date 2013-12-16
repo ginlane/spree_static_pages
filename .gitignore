@@ -12,4 +12,4 @@ nbproject
 pkg
 *.swp
 spec/dummy
-.jhw-cache
+.jhw-cache/

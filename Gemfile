@@ -11,5 +11,10 @@ gem "binding_of_caller"
 gem 'shoulda', '~>3.5.0'
 gem 'shoulda-matchers', '~>2.4.0', require: false
 
+gem 'glm_ember', path: '../glm_ember'
+gem 'teaspoon'
+gem 'guard'
+gem 'guard-rspec'
+gem 'guard-teaspoon'
 
 gemspec
