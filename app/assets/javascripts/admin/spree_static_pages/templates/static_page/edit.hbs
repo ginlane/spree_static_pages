@@ -1,19 +1,25 @@
+<h2>{{name}} {{#if state}}[{{state}}]{{/if}}</h2>
 <form class="static-page-form">
   {{view SpreeStaticPages.ErrorMessages}}
   <div class="field">
+    <label>Page Title</label>
     {{input type="text" value=name}}
   </div>
   <div class="field">
+    <label>Path</label>
     {{input type="text" value=path}}
   </div>
   <div class="field">
+    <label>Active On</label>
     {{view SpreeStaticPages.DateField dateBinding="activeOn"}}
   </div>
   <div class="field">
+    <label>Content</label>
     {{textarea value=text}}
   </div>
   <button {{action "save"}}>Save</button>
   {{#unless isNew}}
     {{view SpreeStaticPages.PreviewButton}}
+    <button {{action "publish"}}>Publish</button>
   {{/unless}}
 </form>
