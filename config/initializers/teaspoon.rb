@@ -1,4 +1,3 @@
-
 Teaspoon.setup do |config|
 
   # This determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
@@ -8,7 +7,7 @@ Teaspoon.setup do |config|
   # This defaults to Rails.root if left nil. If you're testing an engine using a dummy application it can be useful to
   # set this to your engines root.. E.g. `Teaspoon::Engine.root`
   config.root = SpreeStaticPages::Engine.root
-
+  config.server_port = 3030
   # These paths are appended to the Rails assets paths (relative to config.root), and by default is an array that you
   # can replace or add to.
   config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets"]

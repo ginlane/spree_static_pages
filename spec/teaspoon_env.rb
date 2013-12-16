@@ -16,7 +16,7 @@ Teaspoon.setup do |config|
   # Driver / Server
   #config.driver              = "phantomjs" # available: phantomjs, selenium
   #config.server              = nil # defaults to Rack::Server
-
+  config.server_port = 3030
   config.suite do |suite|
     suite.javascripts = %w[ teaspoon/qunit ]
     suite.helper      = "test_helper"

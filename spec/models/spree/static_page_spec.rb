@@ -26,4 +26,13 @@ describe Spree::StaticPage do
     page.name    = "Path"
     page.approve.should be_true
   end
+
+  it "shuold not fuckup path sanitizing" do
+    page = Spree::StaticPage.new
+    page.name = "Fnord"
+    page.text = "TEXT"
+    page.path = "/pathpathpath"
+    page.save
+    page.path.should eql "pathpathpath"
+  end
 end

@@ -36,8 +36,6 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
     # TODO: update to autodecamelize all attrs
     page_params[:active_on] ||= page_params.delete :activeOn
     @static_page.update_attributes page_params.slice(:name, :path, :active_on, :text)
-
-
     if params[:approve].to_s == "true"
       @static_page.approve
     elsif params[:approve].to_s == "false"

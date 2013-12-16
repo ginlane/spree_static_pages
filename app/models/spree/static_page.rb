@@ -56,9 +56,7 @@ class Spree::StaticPage < ActiveRecord::Base
   end
 
   def sanitize_path
-    if path[0] == "/"
-      path.slice! 1, path.length
-    end
+    self.path = path.slice 1, path.length if path[0] == "/"
     self.path = URI(path).normalize.path
   end
 end

@@ -1,12 +1,3 @@
-window.SpreeStaticPages.StaticPagesEditController = Ember.ObjectController.extend
+window.SpreeStaticPages.StaticPagesEditController = Ember.ObjectController.extend Ember.Evented, SpreeStaticPages.PageSaver,
   isNew: false
   previewUrl: -> @get("model").get("previewUrl")
-  actions:
-    save: ->
-      page = @get "model"
-      succ = (savedPage) =>
-        @transitionToRoute "static_pages.edit", savedPage
-      fail = () ->
-        alert "GAGAGASDFASDFASDFASDFASDF"
-
-      page.save().then succ, fail
