@@ -19,10 +19,18 @@ describe Spree::Admin::StaticPagesController do
     }.to change(Spree::StaticPage, :count).by(1)
   end
 
-  it "should validate approval" do
+  it "should update stuffs" do
     attrs  = FactoryGirl.create(:static_page, name: nil).attributes.with_indifferent_access
     id     = attrs.delete :id
-    spree_put :update, id: id, static_page: attrs, approve: true
+    attrs["name"] = "Thundar"
+    spree_put :update, id: id, static_page: attrs
     assigns(:static_page).should be_draft
+    assigns(:static_page).name.should eql attrs["name"]
+  end
+
+  it "should return the right errors on bum approval" do
+    page = FactoryGirl.create :static_page, state: "draft", name: nil
+    spree_put :approve, id: page.id
+    response.should be_unprocessable
   end
 end

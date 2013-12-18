@@ -13,3 +13,14 @@
 	font-size: 1.2em;
     }
 }
+
+h2.is-dirty {
+    font-style: italic;
+    &:after {
+	content: "*"
+    }
+}
+
+span.error {
+    color: red;
+}

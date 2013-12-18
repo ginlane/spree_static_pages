@@ -31,6 +31,9 @@ guard :teaspoon, port: 57555 do
   # Implementation files
   watch(%r{app/assets/javascripts/(.+).coffee}) { |m| "#{m[1]}_spec" }
 
+  watch(%r{spec/javascripts/spec_helper.coffee}) { "spec/javascripts" }
+
   # Specs / Helpers
   watch(%r{spec/javascripts/(.*)})
+
 end

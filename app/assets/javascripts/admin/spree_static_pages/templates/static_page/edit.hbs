@@ -1,25 +1,25 @@
-<h2>{{name}} {{#if state}}[{{state}}]{{/if}}</h2>
+<h2 {{bind-attr class="isDirty"}}>{{name}} {{#if state}}[{{state}}]{{/if}}</h2>
 <form class="static-page-form">
-  {{view SpreeStaticPages.ErrorMessages}}
   <div class="field">
-    <label>Page Title</label>
-    {{input type="text" value=name}}
+    <label>Page Title <span {{bind-attr class="nameError:error"}}>{{nameError}}</span></label>
+    {{input type="text" value=name placeholder="Static Page"}}
   </div>
   <div class="field">
-    <label>Path</label>
-    {{input type="text" value=path}}
+    <label>Path <span {{bind-attr class="pathError:error"}}>{{pathError}}</span></label>
+    {{input type="text" value=path placeholder="/path/to/content/page"}}
   </div>
   <div class="field">
     <label>Active On</label>
     {{view SpreeStaticPages.DateField dateBinding="activeOn"}}
   </div>
   <div class="field">
-    <label>Content</label>
+    <label>Content<span {{bind-attr class="contentError:error"}}>{{contentError}}</span></label>
     {{textarea value=text}}
   </div>
   <button {{action "save"}}>Save</button>
   {{#unless isNew}}
     {{view SpreeStaticPages.PreviewButton}}
-    <button {{action "publish"}}>Publish</button>
+    <button id='disapprove_button' {{bind-attr class="isApproved::hidden"}} {{action "disapprove"}}>Disapprove</button>
+    <button id='approve_button' {{bind-attr class="isApproved:hidden"}} {{action "approve"}}>Approve</button>
   {{/unless}}
 </form>

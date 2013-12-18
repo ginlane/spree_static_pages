@@ -5,9 +5,11 @@ window.SpreeStaticPages.PageSaver = Ember.Mixin.create
       page = @get "model"
 
       succ = (savedPage) =>
+        @trigger "server:success"
         @transitionToRoute "static_pages.edit", savedPage
 
-      fail = (errors) ->
+      fail = (jhr) =>
+        errors = JSON.parse jhr.responseText
         @trigger "server:failure", errors
 
       page.save().then succ, fail

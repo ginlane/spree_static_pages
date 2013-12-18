@@ -32,21 +32,21 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
 
   def update
     @static_page = Spree::StaticPage.find params[:id]
-    page_params  = params.delete :static_page
-    # TODO: update to autodecamelize all attrs
-    page_params[:active_on] ||= page_params.delete :activeOn
-    @static_page.update_attributes page_params.slice(:name, :path, :active_on, :text)
-    if params[:approve].to_s == "true"
-      @static_page.approve
-    elsif params[:approve].to_s == "false"
-      @static_page.disapprove
-    end
+    page_params  = uncamelize params.delete(:static_page)
 
-    if @static_page.valid?
-      render json: @static_page, status: :ok, controller: self
-    else
-      render json: @static_page.errors, status: :unprocessable_entity
-    end
+    @static_page.update_attributes page_params.slice(:name, :path, :active_on, :text)
+
+    @static_page.valid?? render_success : render_failure
+  end
+
+  def approve
+    @static_page = Spree::StaticPage.find params[:id]
+    @static_page.approve ? render_success : render_failure
+  end
+
+  def disapprove
+    @static_page = Spree::StaticPage.find params[:id]
+    @static_page.disapprove ? render_success : render_failure
   end
 
   protected
@@ -54,4 +54,18 @@ class Spree::Admin::StaticPagesController < Spree::Admin::ResourceController
     action_name == "show" ? "application" : "spree/layouts/admin"
   end
 
+  def render_success
+    render json: @static_page, status: :ok, controller: self
+  end
+
+  def render_failure
+    render json: @static_page.errors, status: :unprocessable_entity, controller: self
+  end
+
+  def uncamelize(params)
+    params.inject({ }) do |acc, (k, v)|
+      acc[k.to_s.underscore] = v
+      acc
+    end.with_indifferent_access
+  end
 end
